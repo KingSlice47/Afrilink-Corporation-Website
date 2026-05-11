@@ -3,32 +3,53 @@ export interface Props {
   name: string;
   sector: string;
   description: string;
-  /** Industry slug — maps to /assets/images/industries/{slug}.jpg */
+  /** Industry slug — maps to /industries/{slug}.jpg for the background photo */
   imageSlug: string;
-  /** Optional logo to show as monogram if image not yet available */
+  /** Company logo slug — maps to /logos/{logoSlug}.svg (or .png). Optional. */
+  logoSlug?: string;
+  /** Monogram fallback when neither image nor logo is available */
   monogram?: string;
 }
 
-const { name, sector, description, imageSlug, monogram } = Astro.props;
+const { name, sector, description, imageSlug, logoSlug, monogram } = Astro.props;
 const imageSrc = `/industries/${imageSlug}.jpg`;
+const logoSrc = logoSlug ? `/logos/${logoSlug}.svg` : null;
 ---
 
 <article class="industry-card">
   <div class="industry-card__media">
-    <!-- Duotone-treated image; degrades to monogram if image missing -->
+    <!-- Monogram fallback (sits behind everything; shows through if images fail) -->
+    <div class="industry-card__monogram" aria-hidden="true">
+      <span>{monogram ?? name.charAt(0)}</span>
+    </div>
+
+    <!-- Background industry photo with duotone treatment -->
     <img
       src={imageSrc}
-      alt={`${name} — ${sector}`}
+      alt=""
       class="industry-card__img"
       loading="lazy"
       decoding="async"
-      onerror="this.style.display='none'; this.nextElementSibling?.classList.add('is-shown');"
+      onerror="this.style.display='none'"
     />
-    <div class={`industry-card__fallback ${!monogram ? '' : ''}`} aria-hidden="true">
-      <span>{monogram ?? name.charAt(0)}</span>
-    </div>
     <div class="industry-card__duotone" aria-hidden="true"></div>
+
+    <!-- Sector tag (top-left) -->
     <span class="industry-card__sector">{sector}</span>
+
+    <!-- Company logo overlay (centered) -->
+    {logoSrc && (
+      <div class="industry-card__logo-wrap">
+        <img
+          src={logoSrc}
+          alt={`${name} logo`}
+          class="industry-card__logo"
+          loading="lazy"
+          decoding="async"
+          onerror="this.parentElement?.remove()"
+        />
+      </div>
+    )}
   </div>
   <div class="industry-card__body">
     <h3>{name}</h3>
@@ -55,6 +76,7 @@ const imageSrc = `/industries/${imageSlug}.jpg`;
   }
   .industry-card:hover .industry-card__img { transform: scale(1.06); }
   .industry-card:hover .industry-card__duotone { opacity: 0.55; }
+  .industry-card:hover .industry-card__logo-wrap { transform: translate(-50%, -50%) scale(1.04); }
 
   .industry-card__media {
     position: relative;
@@ -62,31 +84,9 @@ const imageSrc = `/industries/${imageSlug}.jpg`;
     background: linear-gradient(135deg, var(--c-navy) 0%, var(--c-navy-light) 100%);
     overflow: hidden;
   }
-  .industry-card__img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s var(--ease-out);
-    /* Base photo treatment */
-    filter: grayscale(35%) contrast(1.05) brightness(0.92);
-  }
 
-  /* Duotone wash — sits over the image */
-  .industry-card__duotone {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(135deg, rgba(4, 9, 34, 0.85) 0%, rgba(243, 113, 33, 0.45) 100%);
-    mix-blend-mode: multiply;
-    opacity: 0.75;
-    transition: opacity 0.4s var(--ease-out);
-    pointer-events: none;
-  }
-
-  /* Fallback shown when image fails to load */
-  .industry-card__fallback {
+  /* Monogram fallback — always rendered, sits behind everything */
+  .industry-card__monogram {
     position: absolute;
     inset: 0;
     display: flex;
@@ -96,16 +96,37 @@ const imageSrc = `/industries/${imageSlug}.jpg`;
     font-size: 4rem;
     font-weight: 800;
     letter-spacing: -0.04em;
-    background: linear-gradient(135deg, var(--c-navy) 0%, var(--c-navy-light) 100%);
     z-index: 0;
   }
-  .industry-card__fallback.is-shown { z-index: 1; }
+
+  .industry-card__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out);
+    filter: grayscale(35%) contrast(1.05) brightness(0.92);
+    z-index: 1;
+  }
+
+  /* Duotone wash sits over the photo */
+  .industry-card__duotone {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(4, 9, 34, 0.85) 0%, rgba(243, 113, 33, 0.45) 100%);
+    mix-blend-mode: multiply;
+    opacity: 0.75;
+    transition: opacity 0.4s var(--ease-out);
+    pointer-events: none;
+    z-index: 2;
+  }
 
   .industry-card__sector {
     position: absolute;
     top: 1rem;
     left: 1rem;
-    z-index: 2;
+    z-index: 4;
     background: rgba(4, 9, 34, 0.85);
     color: var(--c-white);
     font-size: 0.75rem;
@@ -116,6 +137,30 @@ const imageSrc = `/industries/${imageSlug}.jpg`;
     border-radius: var(--r-sm);
     border-left: 2px solid var(--c-orange);
     backdrop-filter: blur(8px);
+  }
+
+  /* Centered logo overlay */
+  .industry-card__logo-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: var(--r-sm);
+    padding: 0.75rem 1.25rem;
+    box-shadow: 0 4px 20px rgba(4, 9, 34, 0.35);
+    max-width: 72%;
+    transition: transform 0.4s var(--ease-out);
+    pointer-events: none;
+  }
+  .industry-card__logo {
+    display: block;
+    max-width: 100%;
+    max-height: 60px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
   }
 
   .industry-card__body {
