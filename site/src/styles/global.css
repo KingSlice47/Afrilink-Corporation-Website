@@ -150,6 +150,8 @@ p { line-height: 1.65; color: var(--t-secondary); }
 .section {
   padding: var(--s-3xl) 0;
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
 }
 
 .section--tight   { padding: var(--s-2xl) 0; }
@@ -159,6 +161,75 @@ p { line-height: 1.65; color: var(--t-secondary); }
 .section--dark h4 { color: var(--t-inverse); }
 .section--dark p  { color: var(--t-inverse-dim); }
 .section--alt     { background: var(--c-grey-50); }
+
+/* ============================================
+   Static decorative background patterns
+   Carries the hero's visual language across the page
+   ============================================ */
+
+/* Frozen gradient mesh — applied to every .section automatically */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: -10% -5%;
+  background:
+    radial-gradient(ellipse 50% 40% at 15% 25%, rgba(243, 113, 33, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 35% at 85% 75%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 30% at 55% 15%, rgba(255, 209, 119, 0.05) 0%, transparent 55%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Wave silhouette etched into the background — every other section */
+.section--alt::after,
+.section--pattern-waves::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 600' preserveAspectRatio='none'><path d='M0,300 C360,200 720,400 1080,260 C1260,200 1380,260 1440,240 L1440,600 L0,600 Z' fill='%23F37121' opacity='0.045'/><path d='M0,180 C400,100 880,260 1440,140 L1440,600 L0,600 Z' fill='%23F37121' opacity='0.03'/></svg>");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Dark sections get a different overlay — orange glow + diagonal streaks */
+.section--dark::before {
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(243, 113, 33, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(59, 130, 246, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 60% 20%, rgba(255, 209, 119, 0.07) 0%, transparent 55%);
+}
+.section--dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 600' preserveAspectRatio='none'><path d='M0,260 C300,180 720,340 1140,220 C1320,180 1380,200 1440,200 L1440,600 L0,600 Z' fill='%23F37121' opacity='0.05'/><path d='M0,380 C400,300 880,460 1440,340 L1440,600 L0,600 Z' fill='%233B82F6' opacity='0.06'/></svg>");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Diagonal streak ornament — opt in via class */
+.section--pattern-streaks {
+  position: relative;
+}
+.section--pattern-streaks > .container { position: relative; z-index: 1; }
+.section--pattern-streaks::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(100deg, transparent 0%, transparent 40%, rgba(243, 113, 33, 0.08) 50%, transparent 60%, transparent 100%),
+    linear-gradient(80deg, transparent 0%, transparent 65%, rgba(209, 213, 219, 0.18) 72%, transparent 80%, transparent 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Keep section content above the decorative layers */
+.section > .container { position: relative; z-index: 1; }
 
 @media (max-width: 768px) {
   .section { padding: var(--s-2xl) 0; }

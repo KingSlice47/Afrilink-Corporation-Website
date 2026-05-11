@@ -8,6 +8,8 @@ export interface Props {
   intensity?: 'subtle' | 'bold';
   /** Which path shape to render */
   variant?: 'sweep' | 'layered';
+  /** Accent tint — peeks out behind the main wave */
+  tint?: 'none' | 'orange' | 'grey' | 'gold' | 'blue';
 }
 
 const {
@@ -15,29 +17,51 @@ const {
   direction = 'down',
   intensity = 'bold',
   variant = 'sweep',
+  tint = 'none',
 } = Astro.props;
 
-// Sharp sweeping diagonal — uses straight Bézier control points for "corporate wave" feel
+const tintColor: Record<NonNullable<Props['tint']>, string> = {
+  none:   'transparent',
+  orange: '#F37121',
+  grey:   '#9CA3AF',
+  gold:   '#FFD177',
+  blue:   '#3B82F6',
+};
+
+const accent = tintColor[tint];
+
+// Sharp sweeping diagonal — straight Bézier control points for "corporate wave" feel
 const paths = {
   sweep: 'M0,80 C360,20 720,140 1080,60 C1260,20 1380,40 1440,30 L1440,120 L0,120 Z',
+  // Slightly offset shapes for the accent layer
+  sweepAccent: 'M0,72 C360,12 720,132 1080,52 C1260,12 1380,32 1440,22 L1440,120 L0,120 Z',
   layered: [
     'M0,90 C480,30 960,130 1440,50 L1440,120 L0,120 Z',
     'M0,70 C360,20 720,110 1080,50 C1260,20 1380,40 1440,30 L1440,120 L0,120 Z',
   ],
+  layeredAccent: 'M0,82 C480,22 960,122 1440,42 L1440,120 L0,120 Z',
 };
 
 const classes = [
   'wave-divider',
   intensity === 'bold' ? 'wave-divider--bold' : '',
   direction === 'up' ? 'wave-divider--up' : 'wave-divider--down',
+  tint !== 'none' ? `wave-divider--tint-${tint}` : '',
 ].filter(Boolean).join(' ');
 ---
 
 <div class={classes} aria-hidden="true">
   <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    {tint !== 'none' && (
+      <path
+        d={variant === 'layered' ? paths.layeredAccent : paths.sweepAccent}
+        fill={accent}
+        opacity="0.55"
+      />
+    )}
     {variant === 'layered' ? (
       <>
-        <path d={paths.layered[0]} fill={fillColor} opacity="0.55" />
+        <path d={paths.layered[0]} fill={fillColor} opacity="0.6" />
         <path d={paths.layered[1]} fill={fillColor} />
       </>
     ) : (

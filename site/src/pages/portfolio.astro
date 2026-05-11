@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import IndustryCard from '../components/IndustryCard.astro';
+import WaveDivider from '../components/WaveDivider.astro';
 
 const title = 'Investment Portfolio — Afrilink Corporation';
 const description = 'Strategically diversified investments across automotive, telecoms, mining, construction, software, and cloud accounting in South Africa and Botswana.';
@@ -94,6 +95,8 @@ const focusAreas = [
     </div>
   </section>
 
+  <WaveDivider fillColor="#F8F9FB" direction="down" intensity="subtle" tint="orange" />
+
   <section class="section section--alt" id="companies" aria-labelledby="companies-heading">
     <div class="container">
       <span class="section-eyebrow">{companies.length} Active Investments</span>
@@ -117,6 +120,8 @@ const focusAreas = [
     </div>
   </section>
 
+  <WaveDivider fillColor="#FFFFFF" direction="up" intensity="subtle" tint="grey" />
+
   <section class="section" aria-labelledby="focus-heading">
     <div class="container">
       <span class="section-eyebrow">Where We Invest</span>
@@ -135,6 +140,8 @@ const focusAreas = [
       </div>
     </div>
   </section>
+
+  <WaveDivider fillColor="#F8F9FB" direction="down" intensity="subtle" tint="orange" />
 
   <section class="section section--alt" aria-labelledby="approach-heading">
     <div class="container narrow">
