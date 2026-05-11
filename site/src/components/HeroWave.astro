@@ -21,6 +21,17 @@ const {
 ---
 
 <section class="hero-wave" aria-labelledby="hero-heading">
+  <!-- Ambient floating particles -->
+  <div class="hero-particles" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- Diagonal accent streaks sweeping across -->
+  <div class="hero-streak hero-streak--1" aria-hidden="true"></div>
+  <div class="hero-streak hero-streak--2" aria-hidden="true"></div>
+  <div class="hero-streak hero-streak--3" aria-hidden="true"></div>
+
   <!-- Subtle animated wave layers — bottom of hero -->
   <svg
     class="hero-wave__svg"
@@ -84,6 +95,11 @@ const {
     </div>
 
     <div class="hero-wave__visual" aria-hidden="true">
+      <!-- Pulse rings emanating from the center -->
+      <span class="hero-pulse"></span>
+      <span class="hero-pulse hero-pulse--2"></span>
+      <span class="hero-pulse hero-pulse--3"></span>
+
       <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="ring-grad" x1="0" y1="0" x2="1" y2="1">
@@ -96,29 +112,45 @@ const {
           </linearGradient>
         </defs>
 
-        <!-- Concentric sweeping arcs -->
+        <!-- Concentric sweeping arcs (sped up ~2x) -->
         <circle cx="200" cy="200" r="170"
                 fill="none" stroke="url(#ring-grad)" stroke-width="1.5"
                 stroke-dasharray="900 2000" opacity="0.55">
           <animateTransform attributeName="transform" type="rotate"
-                            from="0 200 200" to="360 200 200" dur="60s" repeatCount="indefinite" />
+                            from="0 200 200" to="360 200 200" dur="28s" repeatCount="indefinite" />
         </circle>
         <circle cx="200" cy="200" r="130"
                 fill="none" stroke="url(#ring-grad-2)" stroke-width="1.5"
                 stroke-dasharray="600 1500" opacity="0.45">
           <animateTransform attributeName="transform" type="rotate"
-                            from="360 200 200" to="0 200 200" dur="48s" repeatCount="indefinite" />
+                            from="360 200 200" to="0 200 200" dur="22s" repeatCount="indefinite" />
         </circle>
         <circle cx="200" cy="200" r="90"
                 fill="none" stroke="url(#ring-grad)" stroke-width="1.25"
                 stroke-dasharray="400 1000" opacity="0.65">
           <animateTransform attributeName="transform" type="rotate"
-                            from="0 200 200" to="360 200 200" dur="36s" repeatCount="indefinite" />
+                            from="0 200 200" to="360 200 200" dur="16s" repeatCount="indefinite" />
         </circle>
 
-        <!-- Central glow -->
-        <circle cx="200" cy="200" r="48" fill="url(#ring-grad)" opacity="0.95" />
-        <circle cx="200" cy="200" r="48" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.4" />
+        <!-- Small orbiting dot on the outer ring -->
+        <circle cx="200" cy="30" r="5" fill="#FFD177" opacity="0.95">
+          <animateTransform attributeName="transform" type="rotate"
+                            from="0 200 200" to="360 200 200" dur="8s" repeatCount="indefinite" />
+        </circle>
+        <!-- Counter-rotating dot on the middle ring -->
+        <circle cx="200" cy="70" r="4" fill="#3B82F6" opacity="0.9">
+          <animateTransform attributeName="transform" type="rotate"
+                            from="360 200 200" to="0 200 200" dur="6s" repeatCount="indefinite" />
+        </circle>
+
+        <!-- Central glow with pulsing animation -->
+        <circle cx="200" cy="200" r="48" fill="url(#ring-grad)" opacity="0.95">
+          <animate attributeName="r" values="46;52;46" dur="3.2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="200" cy="200" r="48" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.4">
+          <animate attributeName="r" values="48;56;48" dur="3.2s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.4;0.1;0.4" dur="3.2s" repeatCount="indefinite" />
+        </circle>
       </svg>
     </div>
   </div>

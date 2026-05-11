@@ -42,8 +42,43 @@ const values = [
     </div>
   </section>
 
+  <!-- Our Story -->
+  <section class="section section--alt" id="story" aria-labelledby="story-heading">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-text">
+          <span class="section-eyebrow">Our Story</span>
+          <h2 id="story-heading">Building Africa's investment future</h2>
+          <p>
+            Afrilink Corporation was founded with a clear vision: to drive meaningful economic
+            transformation across South Africa and the African continent.
+          </p>
+          <p>
+            From our humble beginnings, we have grown into a diversified investment holding company
+            with strategic interests spanning construction, financial services, healthcare, telecoms, mining, and technology.
+          </p>
+          <p>
+            Our journey is defined by a commitment to excellence, sustainable growth, and creating
+            lasting value for our stakeholders and communities.
+          </p>
+        </div>
+        <div class="story-video">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/FGhI4QX-7hE?rel=0&modestbranding=1"
+              title="Afrilink Corporation — Corporate Video"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Mission & Vision -->
-  <section class="section section--alt" id="mission-vision" aria-labelledby="mission-vision-heading">
+  <section class="section" id="mission-vision" aria-labelledby="mission-vision-heading">
     <div class="container">
       <h2 id="mission-vision-heading">Our Mission & Vision</h2>
       <div class="mv-grid">
@@ -70,7 +105,7 @@ const values = [
   </section>
 
   <!-- Corporate Values -->
-  <section class="section" id="values" aria-labelledby="values-heading">
+  <section class="section section--alt" id="values" aria-labelledby="values-heading">
     <div class="container">
       <span class="section-eyebrow">Foundational Pillars</span>
       <h2 id="values-heading">Corporate Values</h2>
@@ -91,7 +126,7 @@ const values = [
   </section>
 
   <!-- Leadership -->
-  <section class="section section--alt" id="leadership" aria-labelledby="leadership-heading">
+  <section class="section" id="leadership" aria-labelledby="leadership-heading">
     <div class="container">
       <h2 id="leadership-heading">Leadership</h2>
       <p class="section-lead">Meet the leaders driving our vision.</p>
@@ -167,6 +202,50 @@ const values = [
     color: var(--t-secondary);
     max-width: 65ch;
     margin: var(--s-sm) 0 var(--s-xl);
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: var(--s-2xl);
+    align-items: center;
+  }
+  .story-text h2 {
+    margin-bottom: var(--s-md);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+  }
+  .story-text p {
+    margin-bottom: var(--s-sm);
+    font-size: 1.0625rem;
+  }
+  .video-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: var(--c-navy);
+    border-radius: var(--r-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .video-frame::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, var(--c-orange) 0%, var(--c-gold) 50%, var(--c-wave-2) 100%);
+    z-index: -1;
+    opacity: 0.4;
+    border-radius: var(--r-sm);
+    filter: blur(8px);
+  }
+  .video-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  @media (max-width: 900px) {
+    .story-grid { grid-template-columns: 1fr; gap: var(--s-xl); }
   }
 
   .mv-grid {
