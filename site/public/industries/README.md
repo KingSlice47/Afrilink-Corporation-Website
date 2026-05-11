@@ -12,7 +12,6 @@ If a file is missing, the card falls back to a navy gradient with the company mo
 | `digital-talent.jpg`  | Strider Digital              | Digital Talent          | software team collaborating, modern office laptops |
 | `construction.jpg`    | Afrilink Building & Civils   | Construction            | high-rise construction, civil engineering site, glass facade |
 | `telecoms.jpg`        | Afrilink Telecoms            | Telecommunications      | network operations center, telecoms tower, server rack |
-| `fiber.jpg`           | BML Telecoms                 | Fiber Installation      | fiber optic strands, fiber splice technician, cable trench |
 | `mining.jpg`          | KP Mining Commodities        | Mining (gold/diamonds/manganese) | open pit mine, mining equipment, gold ore close-up |
 | `software.jpg`        | Hindsight Consulting         | Software Development    | clean code editor screen, developer hands keyboard |
 | `accounting.jpg`      | Hindsight Online             | Cloud Accounting        | dashboard analytics, financial charts on laptop |
@@ -28,7 +27,6 @@ If a file is missing, the card falls back to a navy gradient with the company mo
 
 **Option A — Unsplash (free, attribution appreciated):**
 - https://unsplash.com/s/photos/automotive-manufacturing
-- https://unsplash.com/s/photos/fiber-optic
 - https://unsplash.com/s/photos/mining
 - https://unsplash.com/s/photos/server-room
 - https://unsplash.com/s/photos/construction-site
@@ -45,4 +43,4 @@ The image is rendered with:
 2. A `mix-blend-mode: multiply` overlay of navy → orange gradient at 75% opacity
 3. On hover, the overlay opacity drops to 55% to reveal more of the original photo
 
-This means you don't need to color-treat the source photos — the CSS does it consistently across all eight at once.
+This means you don't need to color-treat the source photos — the CSS does it consistently across all seven at once.
