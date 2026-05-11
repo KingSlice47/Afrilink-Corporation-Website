@@ -12,6 +12,7 @@
         initAccessibilityEnhancements();
         initScrollAnimations();
         initPerformanceOptimizations();
+        initContentExpander();
     });
 
     // Mobile Navigation
@@ -443,10 +444,86 @@
         }
     }
 
+    // Content Expander - View More/Less functionality
+    function initContentExpander() {
+        const expandableContents = document.querySelectorAll('.expandable-content');
+
+        if (!expandableContents.length) return;
+
+        expandableContents.forEach(function(container) {
+            const button = container.querySelector('.btn-expand');
+            const contentFull = container.querySelector('.content-full');
+
+            if (!button || !contentFull) return;
+
+            // Generate unique ID for accessibility
+            const uniqueId = 'expandable-' + Math.random().toString(36).substr(2, 9);
+            contentFull.id = uniqueId;
+            button.setAttribute('aria-controls', uniqueId);
+
+            button.addEventListener('click', function() {
+                const isExpanded = container.classList.contains('expanded');
+
+                // Toggle expanded state
+                container.classList.toggle('expanded');
+
+                // Update ARIA attributes
+                button.setAttribute('aria-expanded', !isExpanded);
+                contentFull.setAttribute('aria-hidden', isExpanded);
+
+                // Update button text
+                const buttonText = button.childNodes[0];
+                if (buttonText && buttonText.nodeType === Node.TEXT_NODE) {
+                    buttonText.textContent = isExpanded ? 'View More ' : 'View Less ';
+                }
+
+                // Announce to screen readers
+                const action = isExpanded ? 'collapsed' : 'expanded';
+                announceToScreenReader('Content ' + action);
+
+                // Smooth scroll if collapsing and content is above viewport
+                if (isExpanded) {
+                    const containerTop = container.getBoundingClientRect().top;
+                    if (containerTop < 0) {
+                        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+
+            // Keyboard support
+            button.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    button.click();
+                }
+            });
+        });
+    }
+
+    // Utility function to toggle expand/collapse programmatically
+    function toggleExpand(container, expand) {
+        if (typeof expand === 'undefined') {
+            expand = !container.classList.contains('expanded');
+        }
+
+        const button = container.querySelector('.btn-expand');
+        if (button && expand !== container.classList.contains('expanded')) {
+            button.click();
+        }
+    }
+
+    // Expand all or collapse all
+    function expandAll(expand) {
+        const containers = document.querySelectorAll('.expandable-content');
+        containers.forEach(function(container) {
+            toggleExpand(container, expand);
+        });
+    }
+
     // Error handling
     window.addEventListener('error', function(event) {
         console.error('JavaScript error:', event.error);
-        
+
         // Announce error to screen readers in development
         if (window.location.hostname === 'localhost') {
             announceToScreenReader('A JavaScript error occurred. Please check the console for details.');
@@ -456,7 +533,9 @@
     // Expose utility functions to global scope if needed
     window.AfrilinkWebsite = {
         announceToScreenReader: announceToScreenReader,
-        validateField: validateField
+        validateField: validateField,
+        toggleExpand: toggleExpand,
+        expandAll: expandAll
     };
 
 })();

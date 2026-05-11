@@ -1,0 +1,89 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import '../styles/waves.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  currentPath?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = '/afrilink-logo.png',
+  currentPath = Astro.url.pathname,
+} = Astro.props;
+
+const site = Astro.site?.toString().replace(/\/$/, '') ?? 'https://afrilinkcorp.co.za';
+const canonicalUrl = canonical ?? `${site}${currentPath}`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Afrilink Corporation" />
+  <meta name="theme-color" content="#040922" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={`${site}${ogImage}`} />
+  <meta property="og:site_name" content="Afrilink Corporation" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${site}${ogImage}`} />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <Header currentPath={currentPath} />
+  <main id="main" role="main">
+    <slot />
+  </main>
+  <Footer />
+
+  <script>
+    const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+    const menu = document.getElementById('nav-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(open));
+        document.body.classList.toggle('nav-locked', open);
+      });
+      menu.querySelectorAll('a').forEach(a =>
+        a.addEventListener('click', () => {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('nav-locked');
+        })
+      );
+    }
+  </script>
+</body>
+</html>

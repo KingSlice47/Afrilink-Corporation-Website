@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroWave from '../components/HeroWave.astro';
+import WaveDivider from '../components/WaveDivider.astro';
+
+const title = 'Afrilink Corporation — Empowering Growth, Creating Value, Building Futures';
+const description = 'Strategic investment holding company committed to broad-based economic empowerment across South Africa and Africa. Diversified portfolio spanning mining, telecoms, construction, automotive, and digital services.';
+
+const focusAreas = [
+  {
+    title: 'Resources & Infrastructure',
+    body: 'Water and sanitation solutions, essential infrastructure development, and resource management optimization aligned with South Africa\'s critical needs.',
+  },
+  {
+    title: 'Healthcare',
+    body: 'Service delivery improvement, medical infrastructure development, and health technology solutions serving underserved communities.',
+  },
+  {
+    title: 'Financial Services',
+    body: 'Financial inclusion initiatives, investment and wealth management opportunities, and economic empowerment financing solutions.',
+  },
+  {
+    title: 'Strategic Ventures',
+    body: 'Technology and digital solutions, emerging market opportunities, digital talent outsourcing, automotive manufacturing, and innovation-driven enterprises.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <HeroWave
+    eyebrow="Investment Holding · South Africa"
+    titleStart="Empowering Growth,"
+    titleAccent="Creating Value,"
+    titleEnd="Building Futures"
+    description="Afrilink Corporation is a dynamic investment holding company committed to broad-based economic empowerment and sustainable business growth across South Africa and the African continent."
+    primaryCta={{ href: '/portfolio', label: 'View Our Portfolio' }}
+    secondaryCta={{ href: '/contact', label: 'Get In Touch' }}
+  />
+
+  <!-- Company Overview -->
+  <section class="section" aria-labelledby="overview-heading">
+    <div class="container">
+      <h2 id="overview-heading">Company Overview</h2>
+      <p class="lead">
+        Founded under the visionary leadership of Dr Molefe M.D. Mokgatle, Afrilink Corporation
+        embraces South Africa's diversity and harnesses the strength and abilities of its people,
+        irrespective of colour, creed, or culture.
+      </p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <span class="stat-card__eyebrow">Registration</span>
+          <p class="stat-card__value">2018/440447/07</p>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__eyebrow">Portfolio</span>
+          <p class="stat-card__value">8 Active Investments</p>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__eyebrow">Focus</span>
+          <p class="stat-card__value">Economic Empowerment</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <WaveDivider fillColor="#040922" direction="down" intensity="bold" variant="layered" />
+
+  <!-- Investment Focus Areas -->
+  <section class="section section--dark" id="focus" aria-labelledby="focus-heading">
+    <div class="container">
+      <span class="section-eyebrow">Investment Strategy</span>
+      <h2 id="focus-heading">Investment Focus Areas</h2>
+      <p class="section-lead">
+        Our investment strategy targets industries that offer both commercial opportunities
+        and meaningful empowerment potential.
+      </p>
+
+      <div class="focus-grid">
+        {focusAreas.map((area, i) => (
+          <article class="focus-card">
+            <span class="focus-card__index">0{i + 1}</span>
+            <h3>{area.title}</h3>
+            <p>{area.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <WaveDivider fillColor="#040922" direction="up" intensity="bold" variant="layered" />
+
+  <!-- CTA -->
+  <section class="section section--cta" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="cta-inner">
+        <h2 id="cta-heading">Ready to Partner With Us?</h2>
+        <p>
+          Discover how Afrilink Corporation can help drive meaningful economic transformation
+          while delivering sustainable returns to shareholders and stakeholders.
+        </p>
+        <div class="cta-buttons">
+          <a href="/partnerships" class="btn btn-primary">Explore Partnerships</a>
+          <a href="/contact" class="btn btn-outline">Contact Us Today</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: 1.125rem;
+    color: var(--t-secondary);
+    max-width: 70ch;
+    margin: var(--s-md) 0 var(--s-xl);
+  }
+  .section-lead {
+    font-size: 1.0625rem;
+    max-width: 65ch;
+    margin: var(--s-sm) 0 var(--s-2xl);
+  }
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--c-orange);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: var(--s-sm);
+  }
+  .section-eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    background: var(--c-orange);
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--s-md);
+    margin-top: var(--s-lg);
+  }
+  .stat-card {
+    background: var(--c-grey-50);
+    padding: var(--s-md) var(--s-lg);
+    border-left: 3px solid var(--c-orange);
+    border-radius: var(--r-sm);
+  }
+  .stat-card__eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--t-muted);
+    font-weight: 600;
+  }
+  .stat-card__value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--t-primary);
+    margin-top: 4px;
+  }
+
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--s-md);
+  }
+  .focus-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: var(--r-sm);
+    padding: var(--s-lg);
+    transition: transform 0.35s var(--ease-out), background 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
+    position: relative;
+  }
+  .focus-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--c-orange);
+  }
+  .focus-card__index {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.16em;
+    color: var(--c-orange);
+    font-weight: 700;
+  }
+  .focus-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    color: var(--c-white);
+  }
+  .focus-card p {
+    color: var(--t-inverse-dim);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .section--cta {
+    background: var(--c-grey-50);
+  }
+  .cta-inner {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .cta-inner h2 { margin-bottom: var(--s-sm); }
+  .cta-inner p {
+    font-size: 1.0625rem;
+    margin-bottom: var(--s-lg);
+  }
+  .cta-buttons {
+    display: flex;
+    gap: var(--s-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>

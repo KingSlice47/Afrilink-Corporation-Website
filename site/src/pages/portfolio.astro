@@ -1,0 +1,217 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import IndustryCard from '../components/IndustryCard.astro';
+
+const title = 'Investment Portfolio — Afrilink Corporation';
+const description = 'Strategically diversified investments across automotive, telecoms, mining, construction, software, and cloud accounting in South Africa and Botswana.';
+
+const companies = [
+  {
+    name: 'Vacuform 2000',
+    sector: 'Automotive Manufacturing',
+    description: 'Specialized automotive component manufacturer serving South Africa\'s leading automotive brands from a 6,500 m² facility in Rosslyn, Pretoria.',
+    imageSlug: 'automotive',
+    monogram: 'V',
+  },
+  {
+    name: 'Strider Digital',
+    sector: 'Digital Talent',
+    description: 'B-BBEE Level 3 certified digital talent provider connecting businesses with top-tier UX designers, software engineers, and technology specialists.',
+    imageSlug: 'digital-talent',
+    monogram: 'S',
+  },
+  {
+    name: 'Afrilink Building & Civils',
+    sector: 'Construction',
+    description: 'Infrastructure development and construction services aligned with South Africa\'s ongoing development needs and transformation goals.',
+    imageSlug: 'construction',
+    monogram: 'AB',
+  },
+  {
+    name: 'Afrilink Telecoms',
+    sector: 'Telecommunications',
+    description: 'Digital infrastructure solutions driving connectivity and communication advancement across South Africa.',
+    imageSlug: 'telecoms',
+    monogram: 'AT',
+  },
+  {
+    name: 'BML Telecoms',
+    sector: 'Fiber Installation',
+    description: 'Specialized fiber optic network development and installation services supporting digital infrastructure expansion.',
+    imageSlug: 'fiber',
+    monogram: 'BML',
+  },
+  {
+    name: 'KP Mining Commodities',
+    sector: 'Mining',
+    description: 'Botswana mining operations focused on gold, diamonds, and manganese extraction and processing.',
+    imageSlug: 'mining',
+    monogram: 'KP',
+  },
+  {
+    name: 'Hindsight Consulting',
+    sector: 'Software Development',
+    description: 'Business software development specializing in accounting and HR systems designed for SMMEs.',
+    imageSlug: 'software',
+    monogram: 'H',
+  },
+  {
+    name: 'Hindsight Online',
+    sector: 'Cloud Accounting',
+    description: 'Cloud-based accounting and business administration services for modern enterprises.',
+    imageSlug: 'accounting',
+    monogram: 'HO',
+  },
+];
+
+const focusAreas = [
+  { title: 'Resources & Infrastructure', body: 'Water and sanitation solutions, essential infrastructure development, and resource management optimization aligned with South Africa\'s critical infrastructure needs.' },
+  { title: 'Healthcare',                 body: 'Service delivery improvement, medical infrastructure development, and health technology solutions addressing healthcare challenges in underserved communities.' },
+  { title: 'Financial Services',         body: 'Financial inclusion initiatives, investment and wealth management opportunities, and economic empowerment financing solutions.' },
+  { title: 'Strategic Ventures',         body: 'Technology and digital solutions, emerging market opportunities, and innovation-driven enterprises representing the future of business growth.' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-header-wave">
+    <div class="container">
+      <span class="section-eyebrow">Our Holdings</span>
+      <h1>Investment Portfolio</h1>
+      <p>Strategically diversified investments reflecting our commitment to broad-based economic empowerment and sustainable value creation across key sectors.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="overview-heading">
+    <div class="container narrow">
+      <h2 id="overview-heading">Portfolio Overview</h2>
+      <p>
+        Afrilink Corporation has strategically developed a diversified investment portfolio that
+        reflects our commitment to broad-based economic empowerment and sustainable value creation
+        across key sectors of the South African economy. Our current investment holdings demonstrate
+        our focus on industries that are fundamental to economic development and transformation,
+        while providing opportunities for meaningful participation by previously disadvantaged communities.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="companies" aria-labelledby="companies-heading">
+    <div class="container">
+      <span class="section-eyebrow">{companies.length} Active Investments</span>
+      <h2 id="companies-heading">Our Portfolio Companies</h2>
+      <p class="section-lead">
+        Afrilink Corporation's diversified investment portfolio spans multiple industry sectors
+        and geographic markets, driving economic growth and transformation.
+      </p>
+
+      <div class="industry-grid">
+        {companies.map(c => (
+          <IndustryCard
+            name={c.name}
+            sector={c.sector}
+            description={c.description}
+            imageSlug={c.imageSlug}
+            monogram={c.monogram}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="focus-heading">
+    <div class="container">
+      <span class="section-eyebrow">Where We Invest</span>
+      <h2 id="focus-heading">Investment Focus Areas</h2>
+      <p class="section-lead">
+        Afrilink Corporation specializes in strategic investments across key sectors fundamental to Africa's growth and development.
+      </p>
+      <div class="focus-grid">
+        {focusAreas.map((area, i) => (
+          <article class="focus-area-card">
+            <span class="focus-area-card__index">0{i + 1}</span>
+            <h3>{area.title}</h3>
+            <p>{area.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="approach-heading">
+    <div class="container narrow">
+      <h2 id="approach-heading">Our Investment Approach</h2>
+      <p>
+        Our investment strategy targets industries that offer both commercial opportunities and
+        meaningful empowerment potential. We focus on sectors that are fundamental to economic
+        development and provide pathways for skills development, job creation, and community participation.
+      </p>
+      <p>
+        Each investment is evaluated not only for its financial returns but also for its contribution
+        to broader economic transformation and sustainable development across the African continent.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .container.narrow { max-width: 880px; }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--c-orange);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: var(--s-sm);
+  }
+  .section-eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    background: var(--c-orange);
+  }
+  .section-lead {
+    font-size: 1.0625rem;
+    color: var(--t-secondary);
+    max-width: 65ch;
+    margin: var(--s-sm) 0 var(--s-xl);
+  }
+
+  .industry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--s-md);
+  }
+
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--s-md);
+  }
+  .focus-area-card {
+    background: var(--c-white);
+    padding: var(--s-lg);
+    border-radius: var(--r-sm);
+    box-shadow: var(--shadow-sm);
+    border-top: 3px solid var(--c-orange);
+    position: relative;
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+  }
+  .focus-area-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+  }
+  .focus-area-card__index {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--c-orange);
+  }
+  .focus-area-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+  .focus-area-card p  { font-size: 0.9375rem; }
+</style>

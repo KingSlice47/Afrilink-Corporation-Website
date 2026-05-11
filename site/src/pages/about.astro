@@ -1,0 +1,292 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'About Us — Afrilink Corporation';
+const description = 'Learn about Afrilink Corporation\'s mission, vision, corporate values, and leadership team driving economic empowerment across South Africa and Africa.';
+
+const values = [
+  { title: 'TRUST',           body: 'Building lasting relationships through reliability, transparency, and consistent delivery on our commitments. Trust forms the cornerstone of our business relationships, enabling us to forge meaningful partnerships with investors, stakeholders, and communities.' },
+  { title: 'RESPECT',         body: 'Honoring the dignity, diversity, and contributions of all stakeholders in our business ecosystem. Respect underpins our approach to broad-based empowerment and inclusive business practices.' },
+  { title: 'INTEGRITY',       body: 'Maintaining the highest ethical standards in all our business practices and decision-making processes. Integrity defines our character as an organization and serves as our compass in navigating complex business environments.' },
+  { title: 'WEALTH CREATION', body: 'Generating sustainable value for shareholders, partners, and communities through strategic investments and operational excellence. Wealth creation extends beyond financial returns to encompass broader socioeconomic impact.' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-header-wave">
+    <div class="container">
+      <span class="section-eyebrow">Who We Are</span>
+      <h1>About Afrilink Corporation</h1>
+      <p>Committed to broad-based economic empowerment and sustainable business growth across South Africa and the African continent.</p>
+    </div>
+  </section>
+
+  <!-- Company Overview -->
+  <section class="section" aria-labelledby="overview-heading">
+    <div class="container narrow">
+      <h2 id="overview-heading">Company Overview</h2>
+      <p>
+        Afrilink Corporation is a dynamic investment holding company committed to broad-based
+        economic empowerment and sustainable business growth across South Africa and the African
+        continent. Founded under the visionary leadership of Dr Molefe M.D. Mokgatle, the corporation
+        embraces South Africa's diversity and harnesses the strength and abilities of its people,
+        irrespective of colour, creed, or culture.
+      </p>
+      <p>
+        As a profit-driven enterprise with strict governance principles, Afrilink Corporation focuses
+        on creating measurable value through strategic investments and partnerships that drive both
+        economic empowerment and commercial success. The corporation operates with a clear understanding
+        that sustainable business growth must be accompanied by meaningful economic transformation and
+        community development.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="section section--alt" id="mission-vision" aria-labelledby="mission-vision-heading">
+    <div class="container">
+      <h2 id="mission-vision-heading">Our Mission & Vision</h2>
+      <div class="mv-grid">
+        <article class="mv-card">
+          <span class="mv-card__tag">Mission</span>
+          <h3>Empowering businesses, transforming economies</h3>
+          <p>
+            To empower South African businesses with integrated, compliant, and user-friendly
+            investment and business management solutions that drive meaningful economic transformation
+            while delivering sustainable returns to shareholders and stakeholders.
+          </p>
+        </article>
+        <article class="mv-card">
+          <span class="mv-card__tag">Vision</span>
+          <h3>Leading investment corporation in Africa</h3>
+          <p>
+            To become a leading investment corporation in Africa, recognized for our commitment
+            to broad-based empowerment, strong governance practices, and sustainable value creation
+            across diverse economic sectors.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Corporate Values -->
+  <section class="section" id="values" aria-labelledby="values-heading">
+    <div class="container">
+      <span class="section-eyebrow">Foundational Pillars</span>
+      <h2 id="values-heading">Corporate Values</h2>
+      <p class="section-lead">
+        Our business philosophy is built on four foundational pillars that guide every decision
+        and interaction across our organization.
+      </p>
+      <div class="values-grid">
+        {values.map((v, i) => (
+          <article class="value-card">
+            <span class="value-card__index">0{i + 1}</span>
+            <h3>{v.title}</h3>
+            <p>{v.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership -->
+  <section class="section section--alt" id="leadership" aria-labelledby="leadership-heading">
+    <div class="container">
+      <h2 id="leadership-heading">Leadership</h2>
+      <p class="section-lead">Meet the leaders driving our vision.</p>
+
+      <div class="leader-grid">
+        <article class="leader-card">
+          <div class="leader-card__photo">
+            <img src="/dr-mokgatle.jpg" alt="Dr Molefe M.D. Mokgatle" width="320" height="320" loading="lazy" />
+          </div>
+          <div class="leader-card__info">
+            <h3>Dr Molefe M.D. Mokgatle</h3>
+            <p class="leader-card__title">Chief Executive Officer &amp; Chairman</p>
+            <p>
+              Dr Mokgatle is a visionary leader with 39 years of distinguished executive leadership
+              across multiple industries including Nedbank Ltd, SABMiller, Sowetan Newspaper, SABC TV,
+              AfriSam, and Aveng Grinaker-LTA.
+            </p>
+            <ul class="leader-quals">
+              <li>DBA — Paris School of Business, France</li>
+              <li>MBA Marketing/Strategy — Cardiff Business School, Wales</li>
+              <li>M.A. Developmental Economics — Schiller International University, London</li>
+              <li>B.A. Economics — St Peter's College, USA</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="leader-card">
+          <div class="leader-card__photo">
+            <img src="/sipho.jpg" alt="Mr Sipho Mampe" width="320" height="320" loading="lazy" />
+          </div>
+          <div class="leader-card__info">
+            <h3>Mr Sipho Mampe</h3>
+            <p class="leader-card__title">Director, Financial Management</p>
+            <p>
+              Sipho Mampe is an entrepreneurial, solution-driven professional with 16 years of senior
+              financial management experience across banking, insurance, consulting, and project management.
+            </p>
+            <ul class="leader-quals">
+              <li>BCom (Finance) — University of Johannesburg</li>
+              <li>Registered Tax Practitioner — SARS</li>
+              <li>Tax Technician (SA) — SAIT</li>
+              <li>Business Accountant in Practice (SA) — CIBA</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .container.narrow { max-width: 880px; }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--c-orange);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: var(--s-sm);
+  }
+  .section-eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    background: var(--c-orange);
+  }
+  .section-lead {
+    font-size: 1.0625rem;
+    color: var(--t-secondary);
+    max-width: 65ch;
+    margin: var(--s-sm) 0 var(--s-xl);
+  }
+
+  .mv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--s-md);
+    margin-top: var(--s-lg);
+  }
+  .mv-card {
+    background: var(--c-white);
+    padding: var(--s-xl);
+    border-radius: var(--r-sm);
+    box-shadow: var(--shadow-md);
+    border-top: 3px solid var(--c-orange);
+  }
+  .mv-card__tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--c-orange);
+    margin-bottom: var(--s-xs);
+  }
+  .mv-card h3 {
+    font-size: 1.375rem;
+    margin-bottom: var(--s-sm);
+    line-height: 1.25;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--s-md);
+  }
+  .value-card {
+    background: var(--c-white);
+    padding: var(--s-lg);
+    border-radius: var(--r-sm);
+    border-left: 3px solid var(--c-orange);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+  }
+  .value-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+  }
+  .value-card__index {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--c-orange);
+  }
+  .value-card h3 {
+    font-size: 1.0625rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+  .value-card p { font-size: 0.9375rem; }
+
+  .leader-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: var(--s-lg);
+    margin-top: var(--s-md);
+  }
+  .leader-card {
+    background: var(--c-white);
+    border-radius: var(--r-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0;
+  }
+  .leader-card__photo {
+    aspect-ratio: 1 / 1.1;
+    overflow: hidden;
+    background: var(--c-navy);
+  }
+  .leader-card__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(15%) contrast(1.05);
+  }
+  .leader-card__info {
+    padding: var(--s-md) var(--s-md);
+  }
+  .leader-card__info h3 {
+    font-size: 1.125rem;
+    margin-bottom: 2px;
+  }
+  .leader-card__title {
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    color: var(--c-orange);
+    font-weight: 600;
+    margin-bottom: var(--s-sm);
+  }
+  .leader-card__info p {
+    font-size: 0.9375rem;
+    margin-bottom: var(--s-sm);
+  }
+  .leader-quals {
+    font-size: 0.875rem;
+    color: var(--t-muted);
+  }
+  .leader-quals li {
+    padding: 4px 0;
+    border-top: 1px solid var(--c-grey-200);
+  }
+  .leader-quals li:first-child { border-top: none; }
+
+  @media (max-width: 640px) {
+    .leader-card { grid-template-columns: 1fr; }
+    .leader-card__photo { aspect-ratio: 16 / 9; }
+  }
+</style>

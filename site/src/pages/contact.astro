@@ -1,0 +1,303 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Contact Us — Afrilink Corporation';
+const description = 'Connect with Afrilink Corporation to explore investment opportunities, partnerships, and collaboration possibilities across Africa\'s growing markets.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-header-wave">
+    <div class="container">
+      <span class="section-eyebrow">Get In Touch</span>
+      <h1>Contact Afrilink Corporation</h1>
+      <p>Connect with our team to explore investment opportunities, partnerships, and collaboration possibilities across Africa's growing markets.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="contact-info-heading">
+    <div class="container">
+      <h2 id="contact-info-heading" class="visually-hidden">Contact Information</h2>
+      <div class="contact-grid">
+        <article class="contact-card">
+          <span class="contact-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          </span>
+          <h3>Corporate Office</h3>
+          <address>
+            <strong>Thembi Place Business Park</strong><br />
+            15 Calderwood Road<br />
+            Lonehill, Sandton<br />
+            Johannesburg 2191<br />
+            South Africa
+          </address>
+        </article>
+
+        <article class="contact-card">
+          <span class="contact-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </span>
+          <h3>Email</h3>
+          <p><strong>General:</strong><br /><a href="mailto:molefe@afrilinkcorp.co.za">molefe@afrilinkcorp.co.za</a></p>
+          <p><strong>Investment:</strong><br /><a href="mailto:molefe@afrilinkcorp.co.za">molefe@afrilinkcorp.co.za</a></p>
+        </article>
+
+        <article class="contact-card">
+          <span class="contact-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+          </span>
+          <h3>Business</h3>
+          <p><strong>Registration:</strong> 2018/440447/07</p>
+          <p><strong>Type:</strong> Investment Holding Company</p>
+          <p><strong>Founded:</strong> 2018</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="form-heading">
+    <div class="container narrow">
+      <span class="section-eyebrow">Reach Out</span>
+      <h2 id="form-heading">Send Us a Message</h2>
+      <p class="section-lead">
+        Ready to discuss your investment goals or partnership opportunities?
+        Our team will respond within 24–48 hours.
+      </p>
+
+      <form class="contact-form" action="#" method="post" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first-name">First Name <span aria-label="required">*</span></label>
+            <input type="text" id="first-name" name="first-name" required />
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name <span aria-label="required">*</span></label>
+            <input type="text" id="last-name" name="last-name" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address <span aria-label="required">*</span></label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="organization">Organization</label>
+            <input type="text" id="organization" name="organization" />
+          </div>
+          <div class="form-group">
+            <label for="inquiry-type">Inquiry Type <span aria-label="required">*</span></label>
+            <select id="inquiry-type" name="inquiry-type" required>
+              <option value="">Select inquiry type</option>
+              <option value="investment">Investment Opportunity</option>
+              <option value="partnership">Partnership Proposal</option>
+              <option value="consultation">Business Consultation</option>
+              <option value="media">Media Inquiry</option>
+              <option value="general">General Information</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject <span aria-label="required">*</span></label>
+          <input type="text" id="subject" name="subject" required placeholder="Brief description of your inquiry" />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message <span aria-label="required">*</span></label>
+          <textarea id="message" name="message" rows="6" required
+            placeholder="Please provide details about your inquiry, investment interest, or partnership proposal."></textarea>
+        </div>
+
+        <div class="form-group form-group--inline">
+          <input type="checkbox" id="privacy-policy" name="privacy-policy" required />
+          <label for="privacy-policy">
+            I agree to the processing of my personal data in accordance with Afrilink Corporation's privacy policy <span aria-label="required">*</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="hours-heading">
+    <div class="container">
+      <h2 id="hours-heading">Additional Information</h2>
+      <div class="info-grid">
+        <article class="info-card">
+          <h3>Business Hours</h3>
+          <p><strong>Monday – Friday:</strong> 8:00 AM – 5:00 PM (SAST)</p>
+          <p><strong>Saturday:</strong> By appointment only</p>
+          <p><strong>Sunday &amp; Public Holidays:</strong> Closed</p>
+        </article>
+        <article class="info-card">
+          <h3>Investment Focus</h3>
+          <ul>
+            <li>Resources &amp; Infrastructure</li>
+            <li>Healthcare Solutions</li>
+            <li>Financial Services</li>
+            <li>Strategic Technology Ventures</li>
+            <li>Economic Empowerment Initiatives</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h3>Geographic Reach</h3>
+          <p><strong>Primary:</strong> South Africa</p>
+          <p><strong>Regional:</strong> Botswana, African Continent</p>
+          <p><strong>Partnerships:</strong> Global</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .container.narrow { max-width: 760px; }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--c-orange);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: var(--s-sm);
+  }
+  .section-eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    background: var(--c-orange);
+  }
+  .section-lead {
+    font-size: 1.0625rem;
+    color: var(--t-secondary);
+    max-width: 65ch;
+    margin: var(--s-sm) 0 var(--s-xl);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--s-md);
+  }
+  .contact-card {
+    background: var(--c-white);
+    padding: var(--s-lg);
+    border-radius: var(--r-sm);
+    box-shadow: var(--shadow-md);
+    border-top: 3px solid var(--c-orange);
+  }
+  .contact-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--r-sm);
+    background: rgba(243, 113, 33, 0.12);
+    color: var(--c-orange);
+    margin-bottom: var(--s-sm);
+  }
+  .contact-card__icon svg { width: 22px; height: 22px; }
+  .contact-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+  .contact-card address {
+    font-style: normal;
+    color: var(--t-secondary);
+    line-height: 1.65;
+  }
+  .contact-card p { margin-bottom: 0.5rem; font-size: 0.9375rem; }
+  .contact-card a { color: var(--c-orange); }
+  .contact-card a:hover { text-decoration: underline; }
+
+  /* Form */
+  .contact-form { display: grid; gap: var(--s-md); margin-top: var(--s-md); }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-md);
+  }
+  .form-group { display: grid; gap: 6px; }
+  .form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--t-primary);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-family: inherit;
+    font-size: 0.9375rem;
+    padding: 0.75rem 0.875rem;
+    border: 1px solid var(--c-grey-300);
+    border-radius: var(--r-sm);
+    background: var(--c-white);
+    transition: border-color 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+    min-height: 48px;
+  }
+  .form-group textarea { min-height: 140px; resize: vertical; }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--c-orange);
+    box-shadow: 0 0 0 3px rgba(243, 113, 33, 0.18);
+  }
+  .form-group--inline {
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.75rem;
+  }
+  .form-group--inline input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    min-height: 20px;
+    accent-color: var(--c-orange);
+    margin-top: 2px;
+  }
+  .form-group--inline label { font-weight: 400; font-size: 0.9375rem; }
+
+  @media (max-width: 640px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--s-md);
+    margin-top: var(--s-md);
+  }
+  .info-card {
+    background: var(--c-grey-50);
+    padding: var(--s-lg);
+    border-radius: var(--r-sm);
+    border-left: 3px solid var(--c-orange);
+  }
+  .info-card h3 { font-size: 1.125rem; margin-bottom: var(--s-sm); }
+  .info-card p { margin-bottom: 4px; font-size: 0.9375rem; }
+  .info-card ul { font-size: 0.9375rem; color: var(--t-secondary); }
+  .info-card li {
+    padding: 4px 0;
+    border-top: 1px solid var(--c-grey-200);
+  }
+  .info-card li:first-child { border-top: none; }
+</style>

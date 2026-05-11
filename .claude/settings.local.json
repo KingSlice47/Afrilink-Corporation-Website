@@ -1,7 +1,18 @@
 {
   "permissions": {
     "allow": [
-      "Bash(cp:*)"
+      "Bash(cp:*)",
+      "Bash(wc:*)",
+      "Bash(dir C:devAfrilink-Corporation-Website *)",
+      "PowerShell(Get-ChildItem \"C:\\\\dev\\\\Afrilink-Corporation-Website\\\\site\" -Recurse -Directory -Force | ForEach-Object { $_.FullName })",
+      "PowerShell(Copy-Item *)",
+      "PowerShell(npm install *)",
+      "PowerShell(New-Item *)",
+      "Bash(npm install *)",
+      "Bash(npm --version)",
+      "Bash(tasklist //FI \"IMAGENAME eq node.exe\")",
+      "Bash(xargs -I {} echo \"exists\")",
+      "Bash(tasklist //FI \"IMAGENAME eq node.exe\" //NH)"
     ],
     "deny": [],
     "ask": []
