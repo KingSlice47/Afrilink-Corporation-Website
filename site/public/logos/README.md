@@ -25,8 +25,8 @@ Drop each company's logo into this folder using the slug below. The `IndustryCar
 
 The component uses `onerror` on the `<img>` to remove the badge entirely. The card then falls back to showing just the duotone photo with the sector tag and monogram letter — no broken image icons.
 
-## To switch a logo to PNG
+## SVG vs PNG
 
-The component currently looks for `/logos/{slug}.svg`. If you need to use a PNG, either:
-1. Convert the PNG to SVG via [svgomg](https://jakearchibald.github.io/svgomg/) or an online converter, or
-2. Tell me and I'll update the component to try `.png` as a fallback when `.svg` 404s
+The component tries `/logos/{slug}.svg` first; if that 404s it automatically falls back to `/logos/{slug}.png`. So you can drop in either format — SVG is preferred for scaling and file size, but PNG works out of the box.
+
+If both SVG and PNG are present, **SVG wins** (loaded first). To force PNG, just don't upload an SVG with that slug.

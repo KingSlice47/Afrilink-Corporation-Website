@@ -13,7 +13,6 @@ export interface Props {
 
 const { name, sector, description, imageSlug, logoSlug, monogram } = Astro.props;
 const imageSrc = `/industries/${imageSlug}.jpg`;
-const logoSrc = logoSlug ? `/logos/${logoSlug}.svg` : null;
 ---
 
 <article class="industry-card">
@@ -37,16 +36,16 @@ const logoSrc = logoSlug ? `/logos/${logoSlug}.svg` : null;
     <!-- Sector tag (top-left) -->
     <span class="industry-card__sector">{sector}</span>
 
-    <!-- Company logo overlay (centered) -->
-    {logoSrc && (
+    <!-- Company logo overlay (centered). Tries SVG, falls back to PNG, then hides. -->
+    {logoSlug && (
       <div class="industry-card__logo-wrap">
         <img
-          src={logoSrc}
+          src={`/logos/${logoSlug}.svg`}
           alt={`${name} logo`}
           class="industry-card__logo"
           loading="lazy"
           decoding="async"
-          onerror="this.parentElement?.remove()"
+          onerror={`if(!this.dataset.fb){this.dataset.fb='1';this.src='/logos/${logoSlug}.png';}else{this.parentElement?.remove();}`}
         />
       </div>
     )}
