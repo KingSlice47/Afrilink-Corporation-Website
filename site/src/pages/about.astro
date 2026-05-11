@@ -240,16 +240,17 @@ const values = [
   .leader-card {
     background: var(--c-white);
     border-radius: var(--r-sm);
-    overflow: hidden;
     box-shadow: var(--shadow-md);
     display: grid;
     grid-template-columns: 160px 1fr;
-    gap: 0;
+    gap: var(--s-md);
+    padding: var(--s-md);
   }
   .leader-card__photo {
     aspect-ratio: 1 / 1.1;
     overflow: hidden;
     background: var(--c-navy);
+    border-radius: var(--r-sm);
   }
   .leader-card__photo img {
     width: 100%;
@@ -258,7 +259,7 @@ const values = [
     filter: grayscale(15%) contrast(1.05);
   }
   .leader-card__info {
-    padding: var(--s-md) var(--s-md);
+    padding: 0;
   }
   .leader-card__info h3 {
     font-size: 1.125rem;
