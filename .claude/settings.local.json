@@ -12,7 +12,12 @@
       "Bash(npm --version)",
       "Bash(tasklist //FI \"IMAGENAME eq node.exe\")",
       "Bash(xargs -I {} echo \"exists\")",
-      "Bash(tasklist //FI \"IMAGENAME eq node.exe\" //NH)"
+      "Bash(tasklist //FI \"IMAGENAME eq node.exe\" //NH)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "WebFetch(domain:afrilinkcorp.co.za)",
+      "WebFetch(domain:www.afrilinkcorp.co.za)"
     ],
     "deny": [],
     "ask": []
