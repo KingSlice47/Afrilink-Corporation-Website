@@ -78,13 +78,9 @@ Afrilink-Corporation-Website/
 
 ### Current Holdings
 1. **Afrilink Building and Civils (Pty) Ltd** - Construction & Civil Engineering
-2. **Afrilink Telecoms (Pty) Ltd** - Telecommunications
-3. **BML Telecoms (Pty) Ltd** - Fiber Installation Services
-4. **Kp Mining Commodities (Pty) Ltd** - Mining (Botswana operations)
-5. **Hindsight Consulting (Pty) Ltd** - Business Software Development
-6. **Hindsight Online (Pty) Ltd** - Digital Professional Services
-7. **Strider Digital (Pty) Ltd** - Digital Talent Outsourcing (B-BBEE Level 3)
-8. **Vacuform 2000 (Pty) Ltd** - Automotive Manufacturing
+2. **Kp Mining Commodities (Pty) Ltd** - Mining (Botswana operations)
+3. **Strider Digital (Pty) Ltd** - Digital Talent Outsourcing (B-BBEE Level 3)
+4. **Vacuform 2000 (Pty) Ltd** - Automotive Manufacturing
 
 ### Investment Focus Areas
 - Resources & Infrastructure

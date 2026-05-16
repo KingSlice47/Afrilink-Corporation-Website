@@ -9,10 +9,7 @@ Drop each company's logo into this folder using the slug below. The `IndustryCar
 | `vacuform.svg`           | Vacuform 2000               | |
 | `strider.svg`            | Strider Digital             | The existing `Strider-logo.svg` from the old `assets/images/` folder can be renamed and dropped in here |
 | `afrilink-building.svg`  | Afrilink Building & Civils  | |
-| `afrilink-telecoms.svg`  | Afrilink Telecoms           | |
 | `kp-mining.svg`          | KP Mining Commodities       | |
-| `hindsight.svg`          | Hindsight Consulting        | |
-| `hindsight-online.svg`   | Hindsight Online            | |
 
 ## Specs
 

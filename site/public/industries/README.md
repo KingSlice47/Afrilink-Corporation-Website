@@ -11,10 +11,7 @@ If a file is missing, the card falls back to a navy gradient with the company mo
 | `automotive.jpg`      | Vacuform 2000                | Automotive Mfg          | car body production, assembly line, automotive parts factory |
 | `digital-talent.jpg`  | Strider Digital              | Digital Talent          | software team collaborating, modern office laptops |
 | `construction.jpg`    | Afrilink Building & Civils   | Construction            | high-rise construction, civil engineering site, glass facade |
-| `telecoms.jpg`        | Afrilink Telecoms            | Telecommunications      | network operations center, telecoms tower, server rack |
 | `mining.jpg`          | KP Mining Commodities        | Mining (gold/diamonds/manganese) | open pit mine, mining equipment, gold ore close-up |
-| `software.jpg`        | Hindsight Consulting         | Software Development    | clean code editor screen, developer hands keyboard |
-| `accounting.jpg`      | Hindsight Online             | Cloud Accounting        | dashboard analytics, financial charts on laptop |
 
 ## Specs
 
